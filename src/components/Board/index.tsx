@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import classes from "./Board.module.scss";
-import { orderBy, random, sampleSize, sortBy, times } from "lodash";
+import { orderBy, random, sampleSize, sortBy, times, uniqueId } from "lodash";
 import Cell from "./Cell";
 import { BoardContext, CellOption, CellType } from "./context";
 
@@ -21,10 +21,8 @@ const Board = () => {
       case 1:
         setSelectedCells((prev) => [...prev, cell]);
         if (cell.combination === selectedCells[0].combination) {
-          return setCompletedCombinations((prev) => [
-            ...prev,
-            cell.combination,
-          ]);
+          setCompletedCombinations((prev) => [...prev, cell.combination]);
+          return setSelectedCells([]);
         }
         return setTimeout(() => {
           setSelectedCells([]);
@@ -54,18 +52,20 @@ const Board = () => {
           {
             ...combination,
             order: orders[0],
-            id: `${combination.color}:${combination.type}:${orders[0]}`,
+            id: uniqueId(),
           },
           {
             ...combination,
             order: orders[1],
-            id: `${combination.color}:${combination.type}:${orders[1]}`,
+            id: uniqueId(),
           },
         ];
       }),
       (item) => item.order
     );
   }, []);
+
+  console.log(cells);
 
   return (
     <BoardContext.Provider value={{ selectedCells, onSelectCell }}>

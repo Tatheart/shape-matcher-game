@@ -16,9 +16,7 @@ const Cell: React.FC<CellProps> = ({ cell, open, onSelect }) => {
         <div
           className={clsx(classes.main, classes[cell.type])}
           style={{ backgroundColor: cell.color }}
-        >
-          {cell.type}
-        </div>
+        ></div>
       ) : (
         <div onClick={() => onSelect?.(cell)} className={classes.closed}>
           ?

@@ -1,12 +1,18 @@
 .root {
   border: orange 1px solid;
-  padding: 12px;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .main {
     width: 100px;
     height: 100px;
     cursor: pointer;
     &.circle {
       border-radius: 50%;
+    }
+    &.rhombus {
+      transform: rotate(45deg);
     }
   }
   .closed {

@@ -3,7 +3,7 @@ import { createContext } from "react";
 export enum CellType {
   Circle = "circle",
   Square = "square",
-  Triangle = "triangle",
+  Rhombus = "rhombus",
 }
 
 export interface CellOption {
