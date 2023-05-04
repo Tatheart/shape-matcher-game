@@ -65,8 +65,6 @@ const Board = () => {
     );
   }, []);
 
-  console.log(cells);
-
   return (
     <BoardContext.Provider value={{ selectedCells, onSelectCell }}>
       <div className={classes.root}>
